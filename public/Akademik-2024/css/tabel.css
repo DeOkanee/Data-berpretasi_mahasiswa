@@ -49,9 +49,27 @@
   text-align: left; /* Rata kiri */
 }
 
+#mahasiswaTable td.nama,
+#mahasiswaTable td.jenis-prestasi {
+  text-align: left;
+  padding-left: 10px;
+}
+#mahasiswaTable td.nama{
+max-width: 160px;
+word-wrap: break-word;
+white-space: normal;
+}
+.jenis-prestasi {
+max-width: 190px; /* Sesuaikan dengan lebar yang diinginkan */
+word-wrap: break-word;
+white-space: normal;
+}
+.peringkat{
+max-width: 60px; /* Sesuaikan dengan lebar yang diinginkan */
+word-wrap: break-word;
+white-space: normal;
 
-
-
+}
 .button-container {
 display: flex;
 gap: 5px; /* Jarak antara tombol */
@@ -146,11 +164,13 @@ margin-top: 10px; /* Menambahkan margin atas untuk pemisah */
 
 /* Media Query untuk layar dengan lebar maksimum 1000px */
 @media (max-width: 1000px) {
-  .TabelPrestasi {
-    width: 90%; /* Menambah lebar pada layar kecil */
-    padding: 15px; /* Mengurangi padding di layar kecil */
-    overflow-x: auto; /* Mengaktifkan scroll horizontal */
-  }
+.TabelPrestasi table {
+  width: 100%;
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+  /* Hapus white-space: nowrap di sini */
+}
 
   .TabelPrestasi h1 {
     font-size: 18px; /* Mengurangi ukuran font pada layar kecil */
@@ -175,7 +195,19 @@ margin-top: 10px; /* Menambahkan margin atas untuk pemisah */
     padding: 6px 10px; /* Menyesuaikan ukuran tombol */
     font-size: 12px; /* Mengurangi ukuran font tombol */
   }
+  #mahasiswaTable td.nama {
+    min-width: 200px; /* Tambahkan min-width */
+    max-width: 300px;
+    word-wrap: break-word;
+    white-space: normal !important; /* Tambahkan !important */
+}
 
+#mahasiswaTable td.jenis-prestasi {
+    min-width: 150px; /* Tambahkan min-width */
+    max-width: 250px;
+    word-wrap: break-word;
+    white-space: normal !important;
+}
   .modal-content {
     margin: 50% auto; /* Menyesuaikan margin modal */
   }
@@ -194,15 +226,13 @@ margin-top: 10px; /* Menambahkan margin atas untuk pemisah */
 
 /* Media Query untuk layar dengan lebar maksimum 440px */
 @media (max-width: 440px) {
-  .TabelPrestasi {
-
-    width: 90%; 
-    padding: 10px; 
-    margin-top: 90px; 
-    margin-bottom: 90px;
-    overflow-x: auto; 
-
-  }
+.TabelPrestasi table {
+  width: 100%;
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+  /* Hapus white-space: nowrap di sini */
+}
 
   .TabelPrestasi h1 {
     font-size: 16px; /* Mengurangi ukuran font judul agar sesuai */
@@ -238,4 +268,22 @@ margin-top: 10px; /* Menambahkan margin atas untuk pemisah */
     background-color: #4caf50; /* Warna scrollbar */
     border-radius: 3px;
   }
+  #mahasiswaTable td.nama{
+    max-width: 700px;
+    word-wrap: break-word;
+  
+  }
+  #mahasiswaTable td.nama {
+    min-width: 150px; /* Tambahkan min-width */
+    max-width: 200px;
+    word-wrap: break-word;
+    white-space: normal !important;
+}
+
+#mahasiswaTable td.jenis-prestasi {
+    min-width: 120px; /* Tambahkan min-width */
+    max-width: 180px;
+    word-wrap: break-word;
+    white-space: normal !important;
+}
 }

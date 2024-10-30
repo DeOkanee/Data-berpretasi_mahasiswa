@@ -300,10 +300,10 @@
                 const row = document.createElement("tr");
                 row.innerHTML = `
                     <td>${number}</td>
-                    <td>${data.nama || ""}</td>
+                    <td class="nama">${data.nama || ""}</td>
                     <td>${data.prodi || ""}</td>
-                    <td>${data.jenisPrestasi || ""}</td>
-                    <td>${data.peringkat || ""}</td>
+                   <td class="jenis-prestasi">${data.jenisPrestasi || ""}</td>
+                    <td class="peringkat">${data.peringkat || ""}</td>
                     <td class="ini-tombol">
                         <a href="${data.linkSertifikat || "#"}" 
                            target="_blank" 
