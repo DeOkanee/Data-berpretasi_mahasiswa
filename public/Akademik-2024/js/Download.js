@@ -1,116 +1,162 @@
 // Download.js
+import { storage } from './firebase-config.js';
+import { ref as storageRef, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
 
 let timerInterval;
-let timeLeft = 60; // waktu dalam detik
+let timeLeft = 60;
 
-function showDownloadForm(nim, sertifikatId, nama, jenisPrestasi) {
+export function showDownloadForm(nim, linkSertifikat, nama, jenisPrestasi) {
+    console.log('ShowDownloadForm called with:', { nim, linkSertifikat, nama, jenisPrestasi });
+    
     const downloadForm = document.getElementById("downloadForm");
+    if (!downloadForm) return;
+
     downloadForm.style.display = "block";
     resetTimer();
 
-    document.getElementById("tokenForm").onsubmit = function (event) {
-        return validateToken(event, nim, sertifikatId, nama, jenisPrestasi);
-    };
+    const tokenForm = document.getElementById("tokenForm");
+    if (tokenForm) {
+        tokenForm.onsubmit = (event) => validateToken(event, nim, linkSertifikat, nama, jenisPrestasi);
+    }
 }
 
-function validateToken(event, nim, sertifikatId, nama, jenisPrestasi) {
+function validateToken(event, nim, linkSertifikat, nama, jenisPrestasi) {
     event.preventDefault();
+    
     const tokenInput = document.getElementById('token').value;
+    const messageElement = document.getElementById('message');
+
+    if (!tokenInput || !nim) {
+        messageElement.textContent = 'NIM tidak boleh kosong!';
+        return false;
+    }
 
     if (tokenInput === nim) {
-        document.getElementById('message').textContent = `Mencari ${nama}...`;
+        messageElement.textContent = `Memverifikasi NIM ${nama}...`;
         setTimeout(() => {
-            document.getElementById('message').textContent = '';
-            downloadSertifikat(sertifikatId, nama, jenisPrestasi);
-            closeDownloadForm();
-        }, 3000);
+            messageElement.textContent = 'Memulai download...';
+            startDownload(linkSertifikat, nama, jenisPrestasi);
+        }, 1500);
     } else {
-        document.getElementById('message').textContent = 'NIM tidak valid!';
+        messageElement.textContent = 'NIM tidak valid!';
     }
     return false;
 }
 
-function downloadSertifikat(sertifikatId, nama, jenisPrestasi) {
-    console.log(`Attempting to download sertifikat: ID=${sertifikatId}, Nama=${nama}, Jenis=${jenisPrestasi}`);
-    
-    fetch(`includes/get_sertifikat.php?id=${sertifikatId}`)
-        .then(response => {
-            console.log('Response received:', response);
-            console.log('Content-Type:', response.headers.get('content-type'));
-            
-            const contentType = response.headers.get('content-type');
-            if (contentType && contentType.includes('application/json')) {
-                return response.json().then(data => {
-                    throw new Error(data.message || 'Unknown error occurred');
-                });
-            }
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.blob();
-        })
-        .then(blob => {
-            console.log('Blob received:', blob);
-            
-            if (blob.size === 0) {
-                throw new Error('The file is empty');
-            }
-            
-            const link = document.createElement('a');
-            const url = URL.createObjectURL(blob);
-            link.href = url;
-            
-            const contentType = blob.type;
-            console.log('Blob content type:', contentType);
-            
-            let extension = 'jpg'; // default extension
-            if (contentType === 'application/pdf') {
-                extension = 'pdf';
-            } else if (contentType.startsWith('image/')) {
-                extension = contentType.split('/')[1];
-            }
-            
-            const fileName = `Sertifikat_${jenisPrestasi.replace(/\s+/g, "_")}_${nama.replace(/\s+/g, "_")}.${extension}`;
-            console.log('File name:', fileName);
-            
-            link.download = fileName;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-            
-            console.log('Download initiated');
-        })
-        .catch(error => {
-            console.error('Error during download:', error);
-            document.getElementById('message').textContent = `Gagal mengunduh sertifikat: ${error.message}`;
-        });
+async function startDownload(linkSertifikat, nama, jenisPrestasi) {
+    try {
+        console.log('Downloading:', linkSertifikat);
+        
+        const fileRef = storageRef(storage, linkSertifikat);
+        const downloadURL = await getDownloadURL(fileRef);
+        
+        // Buat element untuk download
+        const link = document.createElement('a');
+        link.href = downloadURL;
+        link.style.display = 'none';
+        
+        // Format nama file
+        const safeNama = nama.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+        const safeJenis = jenisPrestasi.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+        const extension = linkSertifikat.split('.').pop() || 'pdf';
+        
+        link.download = `sertifikat_${safeJenis}_${safeNama}.${extension}`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        const messageElement = document.getElementById('message');
+        messageElement.textContent = 'Download berhasil dimulai!';
+        messageElement.style.color = '#4CAF50';
+        
+        setTimeout(() => {
+            closeDownloadForm();
+        }, 2000);
+
+    } catch (error) {
+        console.error('Download error:', error);
+        const messageElement = document.getElementById('message');
+        messageElement.textContent = `Gagal mengunduh: ${error.message}`;
+        messageElement.style.color = '#f44336';
+        
+        setTimeout(() => {
+            closeDownloadForm();
+        }, 3000);
+    }
 }
 
-function closeDownloadForm() {
+export function closeDownloadForm() {
     const downloadForm = document.getElementById("downloadForm");
-    downloadForm.style.display = "none"; // Menyembunyikan modal
-    clearInterval(timerInterval); // Hentikan timer
-    resetTimerDisplay(); // Reset tampilan timer
-    document.getElementById("message").textContent = ""; // Menghapus pesan
-    document.getElementById("token").value = ""; // Mengosongkan input token
+    if (!downloadForm) return;
+    
+    downloadForm.style.display = "none";
+    clearInterval(timerInterval);
+    resetTimerDisplay();
+    
+    const messageElement = document.getElementById("message");
+    const tokenInput = document.getElementById("token");
+    
+    if (messageElement) {
+        messageElement.textContent = "";
+        messageElement.style.color = ""; // Reset warna
+    }
+    if (tokenInput) tokenInput.value = "";
 }
 
 function resetTimer() {
-    clearInterval(timerInterval); // Hentikan timer jika sedang berjalan
-    timeLeft = 60; // Reset waktu
-    document.getElementById("timeLeft").textContent = timeLeft; // Update tampilan
+    clearInterval(timerInterval);
+    timeLeft = 60;
+    updateTimerDisplay();
 
     timerInterval = setInterval(() => {
         timeLeft--;
-        document.getElementById("timeLeft").textContent = timeLeft; // Update tampilan
+        updateTimerDisplay();
+        
         if (timeLeft <= 0) {
-            clearInterval(timerInterval); // Hentikan timer
-            closeDownloadForm(); // Tutup modal ketika waktu habis
+            clearInterval(timerInterval);
+            closeDownloadForm();
         }
     }, 1000);
 }
 
-function resetTimerDisplay() {
-    document.getElementById("timeLeft").textContent = "60"; // Set kembali tampilan ke 60 detik
+function updateTimerDisplay() {
+    const timeLeftElement = document.getElementById("timeLeft");
+    if (timeLeftElement) {
+        timeLeftElement.textContent = timeLeft;
+    }
 }
+
+function resetTimerDisplay() {
+    const timeLeftElement = document.getElementById("timeLeft");
+    if (timeLeftElement) {
+        timeLeftElement.textContent = "60";
+    }
+}
+
+// Make functions available globally
+window.showDownloadForm = showDownloadForm;
+window.closeDownloadForm = closeDownloadForm;
+
+// Tambahkan CSS untuk animasi pesan
+const style = document.createElement('style');
+style.textContent = `
+    #message {
+        transition: color 0.3s ease;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    
+    .modal {
+        animation: fadeIn 0.3s ease-out;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+`;
+document.head.appendChild(style);
