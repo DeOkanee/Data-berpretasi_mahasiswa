@@ -1,5 +1,5 @@
 // Download.js
-import { storage } from '../firebase-config.js';
+import { storage } from './firebase-config.js';
 import { ref as storageRef, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
 
 let timerInterval;

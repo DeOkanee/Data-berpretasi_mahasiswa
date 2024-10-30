@@ -20,4 +20,3 @@ const db = getDatabase(app);
 const storage = getStorage(app);
 
 export { app, db, storage };
-export default db;
