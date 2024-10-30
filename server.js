@@ -10,8 +10,21 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'home.html'));
 });
 
-// Menjalankan server di port 3000
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+// Route untuk akademi-2023.html
+app.get('/akademi-2023', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'akademi-2023.html'));
 });
+
+// Handle 404
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'home.html'));
+});
+
+// Menggunakan port dari environment variable untuk Vercel
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
+// Export app untuk Vercel
+module.exports = app;
