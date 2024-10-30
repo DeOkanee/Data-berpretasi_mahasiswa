@@ -268,11 +268,7 @@ margin-top: 10px; /* Menambahkan margin atas untuk pemisah */
     background-color: #4caf50; /* Warna scrollbar */
     border-radius: 3px;
   }
-  #mahasiswaTable td.nama{
-    max-width: 700px;
-    word-wrap: break-word;
-  
-  }
+
   #mahasiswaTable td.nama {
     min-width: 150px; /* Tambahkan min-width */
     max-width: 200px;
