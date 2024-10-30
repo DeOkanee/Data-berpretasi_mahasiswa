@@ -12,8 +12,40 @@
     ],
     "routes": [
       {
-        "src": "/static/(.*)",
-        "dest": "/public/$1"
+        "src": "/Akademik-2024/css/(.*)",
+        "dest": "/public/Akademik-2024/css/$1"
+      },
+      {
+        "src": "/Akademik-2024/js/(.*)",
+        "dest": "/public/Akademik-2024/js/$1"
+      },
+      {
+        "src": "/Akademik-2024/upload",
+        "dest": "/public/Akademik-2024/upload.html"
+      },
+      {
+        "src": "/Akademik-2024/(.*)",
+        "dest": "/public/Akademik-2024/$1"
+      },
+      {
+        "src": "/js/(.*)",
+        "dest": "/public/js/$1"
+      },
+      {
+        "src": "/css/(.*)",
+        "dest": "/public/css/$1"
+      },
+      {
+        "src": "/images/(.*)",
+        "dest": "/public/images/$1"
+      },
+      {
+        "src": "/akademik-2023",
+        "dest": "/public/akademik-2023.html"
+      },
+      {
+        "src": "/upload",
+        "dest": "/public/upload.html"
       },
       {
         "src": "/(.*)",
