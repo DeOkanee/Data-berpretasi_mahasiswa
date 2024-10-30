@@ -11,7 +11,7 @@
       name="keywords"
       content="Mahasiswa Berprestasi Fakultas Dharma Acarya"
     />
-   
+
     <meta
       property="og:description"
       content="Mahasiswa Berprestasi Fakultas Dharma Acarya adalah individu yang menunjukkan dedikasi luar biasa dalam akademik. Dengan prestasi yang mengesankan, mereka menjadi teladan bagi rekan-rekan mereka, berkontribusi dalam pengembangan komunitas, serta aktif dalam kegiatan sosial dan kemanusiaan. Bersama-sama, mereka menciptakan inovasi dan dampak positif yang mendukung visi Fakultas Dharma Acarya."
@@ -34,17 +34,25 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
       rel="stylesheet"
     />
-<!-- Di bagian <head> atau sebelum </body> -->
-  <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"></script>
-  <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"></script>
-  <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js"></script>
-  <!-- Di bagian <head> atau sebelum </body> -->
+    <!-- Di bagian <head> atau sebelum </body> -->
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"
+    ></script>
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
+    ></script>
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js"
+    ></script>
+    <!-- Di bagian <head> atau sebelum </body> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="./css/home-style.css" />
     <link rel="stylesheet" href="./css/tabel.css" />
     <link rel="stylesheet" href="./css/pop-up.css" />
     <link rel="stylesheet" href="./css/lokasi-pop-up.css" />
-   
   </head>
   <body>
     <section>
@@ -62,17 +70,18 @@
 
         <div class="hamburger" id="hamburger-menu">
           <i class="bi bi-list"></i>
-      </div>
+        </div>
         <div class="nav-bar" id="nav-bar">
-        
-          <a href="#" style="color: blue;"> AKADEMIK TAHUN 2023</a>
+          <a href="#" style="color: blue"> AKADEMIK TAHUN 2023</a>
           <a href="./home.html"><i class="bi bi-house"></i> HOME </a>
           <div id="profil" class="dropdown">
             <a href="#" id="akademik-link">
               <i class="bi bi-chevron-down"></i> PILIH TAHUN
             </a>
             <div class="dropdown-content">
-              <a href="./Akademik-2024/akademik-2024.html">AKADEMIK TAHUN 2024</a>
+              <a href="./Akademik-2024/akademik-2024.html"
+                >AKADEMIK TAHUN 2024</a
+              >
             </div>
           </div>
           <div id="profil" class="dropdown">
@@ -80,38 +89,40 @@
               <i class="bi bi-chevron-down"></i> PROFIL
             </a>
             <div class="dropdown-content">
-                <a href="https://uhnsugriwa.ac.id/" target="_blank">UHN Sugriwa Official</a>
+              <a href="https://uhnsugriwa.ac.id/" target="_blank"
+                >UHN Sugriwa Official</a
+              >
               <a href="#" target="_blank">Fakultas Dharma Acarya</a>
             </div>
           </div>
           <a class="upload" href="#" id="upload-link">
             <i class="bi bi-file-earmark-text"></i> UPLOAD SERTIFIKAT
-        </a>
+          </a>
 
           <!-- Pop-Up Login -->
           <div id="login-popup" class="popup">
             <div class="popup-content">
-                <span class="close">&times;</span>
-                <h2>
-                    Masukkan <br />
-                    Username & Password
-                </h2>
-                <div id="error-message" style="color: red; display: none"></div>
-                <input
-                    id="username"
-                    type="text"
-                    placeholder="Username"
-                    required
-                />
-                <input
-                    id="password"
-                    type="password"
-                    placeholder="Password"
-                    required
-                />
-                <button id="login-button">Login</button>
+              <span class="close">&times;</span>
+              <h2>
+                Masukkan <br />
+                Username & Password
+              </h2>
+              <div id="error-message" style="color: red; display: none"></div>
+              <input
+                id="username"
+                type="text"
+                placeholder="Username"
+                required
+              />
+              <input
+                id="password"
+                type="password"
+                placeholder="Password"
+                required
+              />
+              <button id="login-button">Login</button>
             </div>
-        </div>
+          </div>
 
           <div style="display: none" class="dropdown">
             <a href="#" id="akademik-link">
@@ -136,41 +147,41 @@
     <section>
       <div class="TabelPrestasi">
         <h1>
-            Daftar Mahasiswa Berprestasi Tahun 2023 <br />
-            Fakultas Dharma Acarya
+          Daftar Mahasiswa Berprestasi Tahun 2023 <br />
+          Fakultas Dharma Acarya
         </h1>
-    
-        <table id="mahasiswaTable">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Prodi</th>
-                    <th>Jenis Prestasi</th>
-                    <th>Peringkat</th>
-                    <th>Sertifikat</th>
-                </tr>
-            </thead>
-            <tbody id="tbody">
-                <!-- Data akan dimuat di sini -->
-            </tbody>
-        </table>
-    </div>
 
-    <div id="downloadForm" class="modal" style="display: none">
-      <div class="modal-content">
+        <table id="mahasiswaTable">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>Prodi</th>
+              <th>Jenis Prestasi</th>
+              <th>Peringkat</th>
+              <th>Sertifikat</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+            <!-- Data akan dimuat di sini -->
+          </tbody>
+        </table>
+      </div>
+
+      <div id="downloadForm" class="modal" style="display: none">
+        <div class="modal-content">
           <span class="close" onclick="closeDownloadForm()">&times;</span>
           <h2>Download Sertifikat</h2>
           <p class="text">Gunakan NIM Anda Untuk Mendownload Sertifikat</p>
           <form id="tokenForm" class="tokenForm">
-              <label for="token">Masukkan NIM:</label>
-              <input type="text" id="token" placeholder="Masukkan NIM" required />
-              <p id="timer">Waktu tersisa: <span id="timeLeft">60</span> detik</p>
-              <button type="submit">Download</button>
+            <label for="token">Masukkan NIM:</label>
+            <input type="text" id="token" placeholder="Masukkan NIM" required />
+            <p id="timer">Waktu tersisa: <span id="timeLeft">60</span> detik</p>
+            <button type="submit">Download</button>
           </form>
           <p id="message"></p>
+        </div>
       </div>
-  </div>
     </section>
 
     <section class="main-content">
@@ -179,7 +190,7 @@
           <a href="tel:+62361226656" target="_blank"
             ><i class="bi bi-telephone-fill"></i> +62 361 226656</a
           >
-          <a href="https://uhnsugriwa.ac.id"   target="_blank"
+          <a href="https://uhnsugriwa.ac.id" target="_blank"
             ><i class="bi bi-house-door-fill"></i> uhnsugriwa.ac.id</a
           >
           <a href="#" id="location-link"
@@ -210,7 +221,8 @@
         <div class="social-icons">
           <a href="#"><i class="bi bi-facebook"></i></a>
           <a
-            href="https://www.instagram.com/uhnsugriwa_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"
+            href="https://www.instagram.com/uhnsugriwa_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            target="_blank"
             ><i class="bi bi-instagram"></i
           ></a>
           <a href="https://www.youtube.com/@UhnsugriwaOfficial" target="_blank"
@@ -222,140 +234,151 @@
     <!-- Pop-Up Login -->
 
     <!--Script JS-->
-    
+
     <script src="js/dropdown.js"></script>
     <script src="js/search.js"></script>
     <script src="js/hamburger-menu.js"></script>
     <script src="js/nav-bar-show.js"></script>
-  
-  <!-- Sebelum closing </body> -->
 
+    <!-- Sebelum closing </body> -->
 
     <script src="js/login.js"></script>
     <script src="js/lokasi.js"></script>
     <!-- Di akademik-2023.html, sebelum </body> -->
-<!-- Di akhir file, sebelum </body> -->
-<!-- Hapus script src="js/firebase-config.js" yang lama -->
-<script type="module" src="js/firebase-config.js"></script>
-<script type="module" src="js/Download.js"></script>
+    <!-- Di akhir file, sebelum </body> -->
+    <!-- Hapus script src="js/firebase-config.js" yang lama -->
+    <script type="module" src="./js/firebase-config.js"></script>
+    <script type="module" src="./js/Download.js"></script>
 
-<script type="module">
-  // Import Firebase modules
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-  import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+    <script type="module">
+      // Import Firebase modules
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        onValue,
+      } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 
-  console.log("Script started");
+      console.log("Script started");
 
-  const firebaseConfig = {
-      apiKey: "AIzaSyC2YUcIQnCUwp7OcPG58_rB6x--9Nvo97M",
-      authDomain: "data-berprestasi-mahasiswa.firebaseapp.com",
-      databaseURL: "https://data-berprestasi-mahasiswa-default-rtdb.firebaseio.com",
-      projectId: "data-berprestasi-mahasiswa",
-      storageBucket: "data-berprestasi-mahasiswa.appspot.com",
-      messagingSenderId: "318837909207",
-      appId: "1:318837909207:web:ee0245b4f92262cdf07292",
-      measurementId: "G-T31LDNJ632"
-  };
+      const firebaseConfig = {
+        apiKey: "AIzaSyC2YUcIQnCUwp7OcPG58_rB6x--9Nvo97M",
+        authDomain: "data-berprestasi-mahasiswa.firebaseapp.com",
+        databaseURL:
+          "https://data-berprestasi-mahasiswa-default-rtdb.firebaseio.com",
+        projectId: "data-berprestasi-mahasiswa",
+        storageBucket: "data-berprestasi-mahasiswa.appspot.com",
+        messagingSenderId: "318837909207",
+        appId: "1:318837909207:web:ee0245b4f92262cdf07292",
+        measurementId: "G-T31LDNJ632",
+      };
 
-  console.log("Initializing Firebase");
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
+      console.log("Initializing Firebase");
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
 
-  function loadTableData() {
-    console.log("Loading table data");
-    const mahasiswaRef = ref(db, 'mahasiswa');
-    
-    onValue(mahasiswaRef, (snapshot) => {
-        console.log("Data received:", snapshot.val());
-        const tbody = document.getElementById('tbody');
-        
-        if (!tbody) {
-            console.error("tbody element not found");
-            return;
-        }
-        
-        tbody.innerHTML = '';
-        let number = 1;
+      function loadTableData() {
+        console.log("Loading table data");
+        const mahasiswaRef = ref(db, "mahasiswa");
 
-        if (snapshot.exists()) {
-            snapshot.forEach((childSnapshot) => {
+        onValue(
+          mahasiswaRef,
+          (snapshot) => {
+            console.log("Data received:", snapshot.val());
+            const tbody = document.getElementById("tbody");
+
+            if (!tbody) {
+              console.error("tbody element not found");
+              return;
+            }
+
+            tbody.innerHTML = "";
+            let number = 1;
+
+            if (snapshot.exists()) {
+              snapshot.forEach((childSnapshot) => {
                 const data = childSnapshot.val();
                 console.log("Processing data:", data);
-                
-                const row = document.createElement('tr');
+
+                const row = document.createElement("tr");
                 row.innerHTML = `
                     <td>${number}</td>
-                    <td>${data.nama || ''}</td>
-                    <td>${data.prodi || ''}</td>
-                    <td>${data.jenisPrestasi || ''}</td>
-                    <td>${data.peringkat || ''}</td>
+                    <td>${data.nama || ""}</td>
+                    <td>${data.prodi || ""}</td>
+                    <td>${data.jenisPrestasi || ""}</td>
+                    <td>${data.peringkat || ""}</td>
                     <td class="ini-tombol">
-                        <a href="${data.linkSertifikat || '#'}" 
+                        <a href="${data.linkSertifikat || "#"}" 
                            target="_blank" 
                            class="view-btn">
                             Lihat
                         </a>
-                        <button class="download-btn-sertifikat" onclick="showDownloadForm('${data.nim}', '${data.linkSertifikat}', '${data.nama}', '${data.jenisPrestasi}')">
+                        <button class="download-btn-sertifikat" onclick="showDownloadForm('${
+                          data.nim
+                        }', '${data.linkSertifikat}', '${data.nama}', '${
+                  data.jenisPrestasi
+                }')">
                          <i class="bi bi-download"></i>
                       </button>
                     </td>
                 `;
-                
+
                 tbody.appendChild(row);
                 number++;
-            });
-        } else {
-            console.log("No data found");
-            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center;">Tidak ada data</td></tr>';
-        }
-    }, (error) => {
-        console.error("Database error:", error);
-        const tbody = document.getElementById('tbody');
-        if (tbody) {
-            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: red;">Error loading data</td></tr>';
-        }
-    });
-}
+              });
+            } else {
+              console.log("No data found");
+              tbody.innerHTML =
+                '<tr><td colspan="6" style="text-align: center;">Tidak ada data</td></tr>';
+            }
+          },
+          (error) => {
+            console.error("Database error:", error);
+            const tbody = document.getElementById("tbody");
+            if (tbody) {
+              tbody.innerHTML =
+                '<tr><td colspan="6" style="text-align: center; color: red;">Error loading data</td></tr>';
+            }
+          }
+        );
+      }
 
-  // Load data when document is ready
-  document.addEventListener('DOMContentLoaded', () => {
-      console.log("DOM Content Loaded");
-      loadTableData();
-  });
-</script>
-<style>
+      // Load data when document is ready
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log("DOM Content Loaded");
+        loadTableData();
+      });
+    </script>
+    <style>
+      .view-btn {
+        background-color: #37f586;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
 
-  .view-btn {
-  background-color: #37f586;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  color: white;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
+      .view-btn:hover {
+        background-color: #2ad671;
+      }
+      .download-btn-sertifikat {
+        margin: 0 10px;
+        background-color: #0011ff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
 
-.view-btn:hover {
-  background-color: #2ad671;
-}
-.download-btn-sertifikat {
-  margin: 0 10px;
-  background-color: #0011ff;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  color: white;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-
-
-.download-btn-sertifikat:hover {
-  background-color: #0056b3;
-}
-
-</style>
+      .download-btn-sertifikat:hover {
+        background-color: #0056b3;
+      }
+    </style>
   </body>
 </html>
