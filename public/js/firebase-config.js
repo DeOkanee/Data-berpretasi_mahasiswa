@@ -2,7 +2,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
-
 const firebaseConfig = {
     apiKey: "AIzaSyC2YUcIQnCUwp7OcPG58_rB6x--9Nvo97M",
     authDomain: "data-berprestasi-mahasiswa.firebaseapp.com",
@@ -14,10 +13,8 @@ const firebaseConfig = {
     measurementId: "G-T31LDNJ632"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const storage = getStorage(app);
 
 export { app, db, storage };
-export default db;
