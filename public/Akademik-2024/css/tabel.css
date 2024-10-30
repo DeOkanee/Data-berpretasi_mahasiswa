@@ -1,0 +1,241 @@
+.TabelPrestasi {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.274); /* Mengurangi opacity bayangan agar lebih halus */
+}
+
+.TabelPrestasi h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 22px; /* Menambah sedikit ukuran font judul */
+}
+
+.TabelPrestasi table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 14px; /* Menambah ukuran font agar lebih mudah dibaca */
+}
+
+#mahasiswaTable th,
+#mahasiswaTable td {
+  border: 1px solid #6d6d6d; /* Menambah ketebalan border */
+  padding: 10px;
+  text-align: center;
+}
+
+#mahasiswaTable th {
+  background-color: #4caf50; /* Warna hijau untuk header */
+  color: white;
+  font-weight: bold; /* Menambah ketebalan teks pada header */
+}
+
+#mahasiswaTable td {
+  background-color: #f0faff; /* Menggunakan warna biru muda yang lebih lembut */
+  padding: 8px;
+}
+
+#mahasiswaTable .No {
+  background-color: #a5d4fa; /* Warna khusus untuk kolom No */
+}
+
+.Nama {
+  text-align: left; /* Rata kiri */
+}
+
+
+
+
+.button-container {
+display: flex;
+gap: 5px; /* Jarak antara tombol */
+justify-content: center; /* Posisi tengah horizontal */
+align-items: center; /* Posisi tengah vertikal */
+}
+
+
+/* Modal styles */
+.modal {
+display: none;
+position: fixed;
+z-index: 1;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+background-color: #fefefe;
+margin: 15% auto;
+padding: 20px 30px;
+border: 1px solid #888;
+width: 80%;
+max-width: 400px;
+border-radius: 8px; /* Menambahkan border-radius */
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan */
+}
+.modal-content h2 {
+font-size: 20px;
+margin-top: 20px;
+}
+.modal-content .text {
+margin-top: -10px;
+font-size: 15px;
+}
+.close {
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+color: rgb(255, 4, 4);
+text-decoration: none;
+cursor: pointer;
+}
+.tokenForm {
+box-sizing: border-box; /* Menghitung padding dan border dalam total lebar */
+}
+.tokenForm label {
+display: block;
+margin: 10px 0 5px; /* Menambahkan margin untuk label */
+}
+
+.tokenForm input[type="text"] {
+width: calc(100% - 20px); /* Mengurangi lebar untuk padding dan border */
+padding: 10px;
+border: 1px solid #b1b1b1;
+border-radius: 5px; /* Menambahkan border-radius pada input */
+box-sizing: border-box; /* Agar padding dihitung dalam lebar total input */
+}
+
+.tokenForm input[type="text"]:focus {
+border-color: #4caf50; /* Warna border saat fokus */
+outline: none; /* Menghilangkan outline */
+}
+.tokenForm button {
+  cursor: pointer;
+padding: 9px 11px;
+border: none;
+background-color: #0539e2;
+color: white;
+border-radius: 5px;
+margin-left: auto; /* Mendorong tombol ke kanan */
+display: block; /* Mengubah display menjadi block */
+}
+#timer {
+font-weight: bold; /* Menebalkan teks timer */
+margin-top: 10px; /* Menambahkan margin atas untuk pemisah */
+}
+
+#message {
+color: red; /* Warna pesan error */
+margin-top: 10px; /* Menambahkan margin atas untuk pemisah */
+}
+
+/* Media Query untuk layar dengan lebar maksimum 1000px */
+@media (max-width: 1000px) {
+  .TabelPrestasi {
+    width: 90%; /* Menambah lebar pada layar kecil */
+    padding: 15px; /* Mengurangi padding di layar kecil */
+    overflow-x: auto; /* Mengaktifkan scroll horizontal */
+  }
+
+  .TabelPrestasi h1 {
+    font-size: 18px; /* Mengurangi ukuran font pada layar kecil */
+  }
+
+  .TabelPrestasi table {
+    width: 100%; /* Menjaga lebar tabel */
+    border-collapse: collapse;
+    display: block; /* Mengubah tabel menjadi elemen block untuk scroll */
+    overflow-x: auto; /* Mengizinkan scroll horizontal */
+    white-space: nowrap; /* Mencegah teks membungkus di dalam tabel */
+  }
+
+  #mahasiswaTable th,
+  #mahasiswaTable td {
+    padding: 8px; /* Mengurangi padding pada sel */
+    font-size: 12px; /* Mengurangi ukuran font di layar kecil */
+  }
+
+  #mahasiswaTable button {
+      cursor: pointer;
+    padding: 6px 10px; /* Menyesuaikan ukuran tombol */
+    font-size: 12px; /* Mengurangi ukuran font tombol */
+  }
+
+  .modal-content {
+    margin: 50% auto; /* Menyesuaikan margin modal */
+  }
+
+  /* Scroll bar kustom untuk tampilan yang lebih baik */
+  .TabelPrestasi table::-webkit-scrollbar {
+    height: 8px; /* Tinggi scrollbar */
+  }
+
+  .TabelPrestasi table::-webkit-scrollbar-thumb {
+    background-color: #4caf50; /* Warna scrollbar */
+    border-radius: 2px; /* Membuat scrollbar lebih halus */
+  }
+}
+
+
+/* Media Query untuk layar dengan lebar maksimum 440px */
+@media (max-width: 440px) {
+  .TabelPrestasi {
+
+    width: 90%; 
+    padding: 10px; 
+    margin-top: 90px; 
+    margin-bottom: 90px;
+    overflow-x: auto; 
+
+  }
+
+  .TabelPrestasi h1 {
+    font-size: 16px; /* Mengurangi ukuran font judul agar sesuai */
+    margin-bottom: 15px; /* Mengurangi jarak bawah judul */
+  }
+
+  .TabelPrestasi table {
+    width: 100%; /* Tabel tetap 100% */
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    display: block; /* Mengubah tabel menjadi elemen block agar scroll horizontal aktif */
+    overflow-x: auto; /* Mengaktifkan scroll horizontal */
+    white-space: nowrap; /* Mencegah teks tabel membungkus dan memaksanya agar dapat di-scroll */
+  }
+
+  #mahasiswaTable th,
+  #mahasiswaTable td {
+    padding: 6px; /* Mengurangi padding sel */
+    font-size: 10px; /* Mengurangi ukuran font di tabel */
+  }
+
+  #mahasiswaTable button {
+    padding: 4px 8px; /* Mengurangi ukuran tombol */
+    font-size: 10px; /* Mengurangi ukuran font tombol */
+  }
+
+  /* Scroll bar akan muncul jika tabel lebih lebar dari layar */
+  .TabelPrestasi table::-webkit-scrollbar {
+    height: 6px; /* Ukuran scrollbar */
+  }
+
+  .TabelPrestasi table::-webkit-scrollbar-thumb {
+    background-color: #4caf50; /* Warna scrollbar */
+    border-radius: 3px;
+  }
+}

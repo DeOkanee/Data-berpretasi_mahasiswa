@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ganti 0 dengan border-box untuk box-sizing yang benar */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f8;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 15%;
+    margin-bottom: 10%;
+}
+
+.left-section {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.right-section {
+    flex: 1;
+}
+
+h1 {
+    color: #272727;
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #eb8704;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    color: #666;
+}
+
+.button-group {
+    margin-top: 35px;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.right-section img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.295));
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Mengatur arah flex menjadi kolom */
+        text-align: center; /* Mengatur teks menjadi di tengah */
+    }
+
+    .left-section {
+        padding-right: 0; /* Menghapus padding saat di layar kecil */
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: center; /* Mengatur tombol di tengah */
+    }
+
+    .right-section {
+        order: -1; /* Menempatkan right-section di atas left-section */
+    }
+
+    .right-section img {
+        margin-top: 20px; /* Menambahkan jarak atas pada gambar */
+        max-width: 80%; /* Mengatur ukuran gambar */
+    }
+}

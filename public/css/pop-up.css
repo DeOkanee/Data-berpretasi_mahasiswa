@@ -1,0 +1,86 @@
+/* Pop-Up Styles */
+.popup {
+    display:none; /* Tersembunyi secara default */
+    position: fixed;
+    z-index: 1000; /* Ditempatkan di atas konten lain */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang transparan */
+    backdrop-filter: blur(5px); /* Efek blur latar belakang */
+}
+
+.popup-content {
+    background-color: white;
+    margin: 10% auto; /* Mengatur margin dari atas */
+    padding: 20px;
+    border-radius: 10px; /* Sudut membulat */
+    border: 1px solid #888;
+    width: 300px; /* Lebar pop-up */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Bayangan untuk efek kedalaman */
+    text-align: center;
+}
+
+.popup-content h2 {
+    margin: 17px 0 20px; /* Margin bawah untuk judul */
+    color: #333; /* Warna teks judul */
+    font-size: 18px;
+}
+
+.popup-content input {
+    width: 90%; /* Lebar penuh */
+    padding: 10px; /* Ruang dalam */
+    margin-bottom: 15px; /* Margin bawah */
+    border: 1px solid #ccc; /* Garis batas */
+    border-radius: 5px; /* Sudut membulat */
+    font-size: 16px; /* Ukuran font */
+}
+
+.popup-content input:focus {
+    border-color: #007bff; /* Warna batas saat fokus */
+    outline: none; /* Menghapus outline */
+}
+
+.popup-content #login-button {
+    background-color: #007bff; /* Warna latar belakang tombol */
+    color: white; /* Warna teks tombol */
+    padding: 10px; /* Ruang dalam tombol */
+    border: none; /* Menghapus garis batas */
+    border-radius: 5px; /* Sudut membulat tombol */
+    font-size: 16px; /* Ukuran font tombol */
+    cursor: pointer; /* Kursor pointer saat hover */
+    transition: background-color 0.3s; /* Transisi halus untuk hover */
+}
+
+.popup-content #login-button:hover {
+    background-color: #0056b3; /* Warna tombol saat hover */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+
+}
+
+.close:hover,
+.close:focus {
+    color: #000; /* Warna saat hover */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#error-message {
+    margin-bottom: 4px;
+    font-weight: bold; /* Membuat teks pesan kesalahan lebih tebal */
+}
+
+@media (max-width: 767px){
+    .popup-content {
+      
+        margin: 40% auto; /* Mengatur margin dari atas */
+        
+    }
+}

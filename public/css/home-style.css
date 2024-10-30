@@ -1,0 +1,382 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.logo-nav-bar {
+    position: fixed;
+    top:  0; /* Menempatkan di bagian bawah */
+    left: 0; /* Menjaga agar tidak ada jarak dari kiri */
+    right: 0; /* Menjaga agar tidak ada jarak dari kanan */
+    z-index: 100; /* Pastikan berada di atas elemen lain */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.301);
+}
+
+.logo-nav-bar .logos {
+    display: flex;
+    align-items: center;
+}
+
+.logos img {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+}
+
+.logos .logo-wrapper {
+    padding-left: 5px;
+    display: flex;
+    flex-direction: column; /* Mengatur arah kolom untuk logo-text dan span */
+}
+
+.logos .logo-text {
+    font-size: 19px;
+    font-weight: bold;
+ 
+}
+
+.logos span {
+    font-size: 15px; /* Sesuaikan ukuran font span */
+    
+}
+
+
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar a {
+    color: #666;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-bar a:hover {
+    color: #0004ff;
+}
+
+.nav-bar .search-icon {
+    margin-left: 20px;
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-icon {
+    cursor: pointer;
+}
+
+.search-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    
+    margin-top: 10px;
+box-shadow: 0 0 8px rgba(0, 0, 0, 0.342);
+    z-index: 1;
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.search-dropdown input[type="text"] {
+    width: 200px;
+    padding: 9px;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+
+    margin: 0;
+}
+
+.dropdown-content a:hover {
+    background-color: #a3f6fc;
+    color: black;
+}
+
+/* Menampilkan dropdown saat hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Menampilkan dropdown saat klik */
+.dropdown.show .dropdown-content {
+    display: block;
+}
+
+.botton-bar {
+    background-color: #1E5AFF;
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+   
+    bottom: 0; /* Menempatkan di bagian bawah */
+    left: 0; /* Menjaga agar tidak ada jarak dari kiri */
+    right: 0; /* Menjaga agar tidak ada jarak dari kanan */
+    z-index: 1000; /* Pastikan berada di atas elemen lain */
+}
+.main-content {
+    flex: 1; /* Membuat konten mengambil ruang yang tersedia */
+}
+.botton-bar .contact-info {
+    display: flex;
+    align-items: center;
+    margin-left: 0; /* Rata kiri */
+}
+
+.botton-bar .contact-info i {
+    margin-right: 10px;
+}
+
+.botton-bar .contact-info a {
+   cursor: pointer;
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+.botton-bar .contact-info a:hover{
+    text-decoration: underline;
+}
+.botton-bar .social-icons {
+    display: flex;
+    align-items: center;
+}
+
+.botton-bar .social-icons a {
+    color: white;
+    margin-left: 10px;
+    font-size: 18px;
+    padding: 0 6px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.botton-bar .social-icons a:hover {
+    color: #ff7300;
+}
+
+/* Responsive Styles */
+@media (max-width: 1000px) {
+    
+    
+    .logos img{
+        width: 35px;
+        height: 35px;
+
+    }
+    .logos .logo-text{
+        font-size: 14px;
+        margin: 0;
+    }
+    .logos span {
+        font-size: 14px; /* Sesuaikan ukuran font span */
+        
+    }
+    .nav-bar {
+        flex-direction: column;
+        align-items: flex-end;
+        display: none; /* Hide nav links by default */
+      padding-right: 20px;
+      text-align: right;
+      gap: 5px;
+    }
+    .nav-bar a {
+        font-size: 14px;
+    }
+    .nav-bar .upload{
+        margin-bottom: 10px;
+    }
+    .nav-bar  #search{
+        margin-bottom: 10px;
+    }
+    .nav-bar.show {
+        display: flex; /* Show nav links when toggled */
+    }
+    .nav-bar {
+        display: none; /* Sembunyikan nav-bar di bawah 440px */
+    }
+    .hamburger {
+ 
+        display: block; /* Tampilkan hamburger di bawah 1000px */
+    }
+    .dropdown-content {
+        max-width: 100vw; /* Lebar maksimum 100% dari viewport */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.322);
+       margin-right: 10%;
+       position: relative;
+       text-align: right;
+    }
+    .botton-bar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    .botton-bar .contact-info{
+        display: flex;
+        align-items: flex-start;
+        padding: 5px 0;
+        gap: 8px;
+        margin-left: 10px;
+        flex-direction: column;
+    }
+    .botton-bar .social-icons{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+      
+    }
+    .botton-bar .contact-info,
+    .botton-bar .social-icons {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 440px) {
+    
+    .logos img{
+        width: 35px;
+        height: 35px;
+
+    }
+    .logos .logo-text{
+        font-size: 14px;
+        margin: 0;
+    }
+    .logos span {
+        font-size: 14px; /* Sesuaikan ukuran font span */
+        
+    }
+    .nav-bar {
+        flex-direction: column;
+        align-items: flex-end;
+        display: none; /* Hide nav links by default */
+      padding-right: 20px;
+      text-align: right;
+      gap: 5px ;
+    }
+    .nav-bar a {
+        font-size: 14px;
+    }
+    .nav-bar .upload{
+        margin-bottom: 10px;
+    }
+    .nav-bar  #search{
+        margin-bottom: 10px;
+    }
+    .nav-bar.show {
+        display: flex; /* Show nav links when toggled */
+    }
+    .nav-bar {
+        display: none; /* Sembunyikan nav-bar di bawah 440px */
+    }
+    .hamburger {
+ 
+        display: block; /* Tampilkan hamburger di bawah 1000px */
+    }
+    .dropdown-content {
+        max-width: 100vw; /* Lebar maksimum 100% dari viewport */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.322);
+       margin-right: 10%;
+       position: relative;
+       text-align: right;
+    }
+    .dropdown-content a{
+        padding: 8px 20px;
+    }
+    .botton-bar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    .botton-bar .contact-info{
+        display: flex;
+        align-items: flex-start;
+        padding: 5px 0;
+        gap: 8px;
+        margin-left: 10px;
+        flex-direction: column;
+    }
+    .botton-bar .social-icons{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+      
+    }
+    .botton-bar .contact-info,
+    .botton-bar .social-icons {
+        margin-bottom: 10px;
+    }
+    
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+/* Media Queries */
+@media (max-width: 1000px) {
+    .hamburger {
+        display: block; /* Tampilkan hamburger di bawah 1000px */
+    }
+ 
+}
+
+
+
+/* Menampilkan nav-bar saat hamburger diklik */
+.nav-bar.show {
+    display: flex; /* Menampilkan nav-bar */
+   position: absolute;
+    right: 0; /* Mengatur posisinya di sebelah kanan */
+    top: 50px; /* Mengatur jarak dari hamburger */
+    background-color: rgb(236, 236, 236); /* Warna latar belakang */
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.322);
+    z-index: 9999; /* Pastikan di atas elemen lain */
+    flex-direction: column; /* Menyusun item secara vertikal */
+    width: 100%; 
+    padding-top: 10px;
+
+   
+}
+

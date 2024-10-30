@@ -1,0 +1,9 @@
+function loadTableData() {
+    console.log("Loading data...");
+    const mahasiswaRef = ref(db, 'mahasiswa');
+    
+    onValue(mahasiswaRef, (snapshot) => {
+        console.log("Data received:", snapshot.val());
+        // ... rest of the code
+    });
+}
