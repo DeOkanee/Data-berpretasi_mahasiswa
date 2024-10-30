@@ -43,27 +43,38 @@ function validateToken(event, nim, linkSertifikat, nama, jenisPrestasi) {
     return false;
 }
 
+// Di dalam Download.js
 async function startDownload(linkSertifikat, nama, jenisPrestasi) {
     try {
-        console.log('Downloading:', linkSertifikat);
-        
-        const fileRef = storageRef(storage, linkSertifikat);
-        const downloadURL = await getDownloadURL(fileRef);
-        
-        // Buat element untuk download
-        const link = document.createElement('a');
-        link.href = downloadURL;
-        link.style.display = 'none';
+        console.log('Starting download process...');
         
         // Format nama file
         const safeNama = nama.replace(/[^a-z0-9]/gi, '_').toLowerCase();
         const safeJenis = jenisPrestasi.replace(/[^a-z0-9]/gi, '_').toLowerCase();
-        const extension = linkSertifikat.split('.').pop() || 'pdf';
-        
-        link.download = `sertifikat_${safeJenis}_${safeNama}.${extension}`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        const extension = linkSertifikat.split('.').pop().split('?')[0].toLowerCase();
+
+        if (['jpg', 'jpeg', 'png'].includes(extension)) {
+            const previewUrl = new URL('image-preview.html', window.location.origin);
+            previewUrl.searchParams.append('path', linkSertifikat);
+            previewUrl.searchParams.append('name', `sertifikat_${safeJenis}_${safeNama}.${extension}`);
+
+            // Open in new window
+            const newWindow = window.open(previewUrl.toString(), '_blank');
+            if (!newWindow) {
+                throw new Error('Pop-up blocked! Please allow pop-ups for this site.');
+            }
+        } else {
+            // For non-image files
+            const fileRef = storageRef(storage, linkSertifikat);
+            const downloadURL = await getDownloadURL(fileRef);
+            
+            const link = document.createElement('a');
+            link.href = downloadURL;
+            link.download = `sertifikat_${safeJenis}_${safeNama}.${extension}`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
 
         const messageElement = document.getElementById('message');
         messageElement.textContent = 'Download berhasil dimulai!';
@@ -78,13 +89,8 @@ async function startDownload(linkSertifikat, nama, jenisPrestasi) {
         const messageElement = document.getElementById('message');
         messageElement.textContent = `Gagal mengunduh: ${error.message}`;
         messageElement.style.color = '#f44336';
-        
-        setTimeout(() => {
-            closeDownloadForm();
-        }, 3000);
     }
 }
-
 export function closeDownloadForm() {
     const downloadForm = document.getElementById("downloadForm");
     if (!downloadForm) return;

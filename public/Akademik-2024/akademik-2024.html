@@ -299,26 +299,20 @@
 
                 const row = document.createElement("tr");
                 row.innerHTML = `
-                    <td>${number}</td>
-                    <td class="nama">${data.nama || ""}</td>
-                    <td>${data.prodi || ""}</td>
-                   <td class="jenis-prestasi">${data.jenisPrestasi || ""}</td>
-                    <td class="peringkat">${data.peringkat || ""}</td>
-                    <td class="ini-tombol">
-                        <a href="${data.linkSertifikat || "#"}" 
-                           target="_blank" 
-                           class="view-btn">
-                            Lihat
-                        </a>
-                        <button class="download-btn-sertifikat" onclick="showDownloadForm('${
-                          data.nim
-                        }', '${data.linkSertifikat}', '${data.nama}', '${
-                  data.jenisPrestasi
-                }')">
-                         <i class="bi bi-download"></i>
-                      </button>
-                    </td>
-                `;
+                      <td>${number}</td>
+                      <td class="nama">${data.nama || ""}</td>
+                      <td>${data.prodi || ""}</td>
+                      <td class="jenis-prestasi">${data.jenisPrestasi || ""}</td>
+                      <td class="peringkat">${data.peringkat || ""}</td>
+                      <td class="ini-tombol">
+                          <button class="view-btn" onclick="showView('${data.linkSertifikat}')">
+                              Lihat
+                          </button>
+                          <button class="download-btn-sertifikat" onclick="showDownloadForm('${data.nim}', '${data.linkSertifikat}', '${data.nama}', '${data.jenisPrestasi}')">
+                              <i class="bi bi-download"></i>
+                          </button>
+                      </td>
+                  `;
 
                 tbody.appendChild(row);
                 number++;
@@ -346,6 +340,25 @@
         loadTableData();
       });
     </script>
+     <script>
+      function showView(linkSertifikat) {
+    console.log("Link Sertifikat:", linkSertifikat);
+    
+    // Ekstrak ekstensi file sebelum query parameters
+    const fileNameMatch = linkSertifikat.match(/\.([^.?]+)(?:\?|$)/);
+    const fileExtension = fileNameMatch ? fileNameMatch[1].toLowerCase() : '';
+    
+    console.log("File Extension:", fileExtension);
+    
+    if (fileExtension === 'pdf') {
+        window.open(`./viewer.html?file=${encodeURIComponent(linkSertifikat)}&type=pdf`, '_blank');
+    } else if (['jpg', 'jpeg', 'png', 'gif'].includes(fileExtension)) {
+        window.open(`./viewer.html?file=${encodeURIComponent(linkSertifikat)}&type=image`, '_blank');
+    } else {
+        alert('Format file tidak didukung');
+    }
+}
+      </script>
     <style>
       .view-btn {
         background-color: #37f586;
