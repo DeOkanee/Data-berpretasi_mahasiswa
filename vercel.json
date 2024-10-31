@@ -1,55 +1,27 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "server.js",
-        "use": "@vercel/node"
-      },
-      {
-        "src": "public/**",
-        "use": "@vercel/static"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/Akademik-2024/css/(.*)",
-        "dest": "/public/Akademik-2024/css/$1"
-      },
-      {
-        "src": "/Akademik-2024/js/(.*)",
-        "dest": "/public/Akademik-2024/js/$1"
-      },
-      {
-        "src": "/Akademik-2024/upload",
-        "dest": "/public/Akademik-2024/upload.html"
-      },
-      {
-        "src": "/Akademik-2024/(.*)",
-        "dest": "/public/Akademik-2024/$1"
-      },
-      {
-        "src": "/js/(.*)",
-        "dest": "/public/js/$1"
-      },
-      {
-        "src": "/css/(.*)",
-        "dest": "/public/css/$1"
-      },
-      {
-        "src": "/images/(.*)",
-        "dest": "/public/images/$1"
-      },
-      {
-        "src": "/akademik-2023",
-        "dest": "/public/akademik-2023.html"
-      },
-      {
-        "src": "/upload",
-        "dest": "/public/upload.html"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/server.js"
-      }
-    ]
-  }
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/Akademik-2024/css/(.*)", "dest": "/public/Akademik-2024/css/$1" },
+    { "src": "/Akademik-2024/js/(.*)", "dest": "/public/Akademik-2024/js/$1" },
+    { "src": "/Akademik-2024/upload", "dest": "/public/Akademik-2024/upload" },
+    { "src": "/Akademik-2024/(.*)", "dest": "/public/Akademik-2024/$1" },
+    { "src": "/js/(.*)", "dest": "/public/js/$1" },
+    { "src": "/css/(.*)", "dest": "/public/css/$1" },
+    { "src": "/images/(.*)", "dest": "/public/images/$1" },
+    { "src": "/akademik-2023", "dest": "/public/akademik-2023" },
+    { "src": "/upload", "dest": "/public/upload" },
+    { "src": "/(.*)", "dest": "/server.js" }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
